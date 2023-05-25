@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,7 +11,6 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
-
 
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
@@ -29,15 +27,12 @@
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
-
 /* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
-
 
 extern char **environ;
 
@@ -48,8 +43,6 @@ extern char **environ;
  * @str: a string
  * @next: points to the next node
  */
-
-
 typedef struct liststr
 {
 	int num;
@@ -59,7 +52,7 @@ typedef struct liststr
 
 /**
  *struct passinfo - contains pseudo-arguements to pass into a function,
- *allowing uniform prototype for function pointer struct
+ *					allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
@@ -79,7 +72,6 @@ typedef struct liststr
  *@readfd: the fd from which to read line input
  *@histcount: the history line number count
  */
-
 typedef struct passinfo
 {
 	char *arg;
@@ -112,7 +104,6 @@ typedef struct passinfo
  *@type: the builtin command flag
  *@func: the function
  */
-
 typedef struct builtin
 {
 	char *type;
@@ -126,12 +117,10 @@ int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-
 /* path.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
-
 
 /* loophsh.c */
 int loophsh(char **);
